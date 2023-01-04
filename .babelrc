@@ -1,0 +1,26 @@
+{
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              "Android >= 5",
+              "ios >= 9",
+              "ie 9"
+            ]
+          },
+          "useBuiltIns": "entry",
+          "corejs": 3
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+    //   "@loadable/babel-plugin",
+    //   ["@babel/plugin-proposal-decorators", { "legacy": true}],
+    //   ["@babel/plugin-proposal-class-properties", { "loose": true}],
+    //   "react-hot-loader/babel"
+    ]
+  }
+  
