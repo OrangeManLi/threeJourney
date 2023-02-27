@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
-import { animate } from "./renderer";
+// import { animate } from "./renderer";
+import RendererViewer from "./components/RendererViewer";
 import "./home.scss";
 
 const Test = () => {
   useEffect(() => {
     console.log("初始化来了2");
-    animate();
+    // animate();
   }, []);
-  return <div>看吧1111</div>;
+  return (
+    <div>
+      <RendererViewer />
+    </div>
+  );
 };
 
 export default Test;

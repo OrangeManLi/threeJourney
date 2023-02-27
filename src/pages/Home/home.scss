@@ -1,3 +1,25 @@
-body {
-    margin: 0;
+.banner-content {
+    line-height: 64px;
+    font-size: 56px;
+    padding: 24px;
+
+    h1,
+    h2 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    h1 {
+        color: #42b883;
+    }
+
+    h2 {
+        color: rgba(255, 255, 255, 0.47);
+    }
+}
+
+.home-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 54px;
 }

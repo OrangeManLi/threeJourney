@@ -37,7 +37,6 @@ camera.lookAt(0, 2, 0);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-document.body.appendChild(renderer.domElement);
 
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -52,11 +51,10 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 // 状态
 let stats = new State();
-document.body.appendChild(stats.dom);
+
 // 灯光
 const light = new THREE.AmbientLight(0x404040);
 scene.add(light);
-
 const light2 = new THREE.HemisphereLight(0xffffff, 0x444444);
 light2.position.set(0, 20, 0);
 scene.add(light2);
@@ -66,8 +64,23 @@ const loader = new FBXLoader();
 console.log("加载", fileUrl);
 loader.load(fileUrl, (fbx) => {
   console.log("加载的了", fbx);
+  fbx.position.set(0, 2, 2);
+  fbx.scale.set(0.2, 0.2, 0.2);
   scene.add(fbx);
 });
+
+const mount = (dom) => {
+  dom.appendChild(renderer.domElement);
+  dom.appendChild(stats.dom);
+
+  function onWindowResize() {
+    camera.aspect = dom.innerWidth / dom.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(dom.innerWidth, dom.innerHeight);
+  }
+
+  window.addEventListener("resize", onWindowResize);
+};
 
 const animate = () => {
   cube.rotation.x += 0.01;
@@ -79,13 +92,5 @@ const animate = () => {
   requestAnimationFrame(animate);
 };
 
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-window.addEventListener("resize", onWindowResize);
-
-export { animate };
+export { animate, mount };
 export default scene;

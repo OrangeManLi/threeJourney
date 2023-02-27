@@ -1,0 +1,35 @@
+.lc-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.lc-container {
+    padding-top: 58px;
+    flex: 1;
+}
+
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+:root {
+    --lc-c-text-1: var(--lc-c-text-dark-1);
+    --lc-c-text-2: var(--lc-c-text-dark-2);
+    --lc-c-text-3: var(--lc-c-text-dark-3);
+    --lc-c-text-4: var(--lc-c-text-dark-4);
+}
+
+:root {
+    --lc-c-text-dark-1: rgba(255, 255, 255, 0.87);
+    --lc-c-text-dark-2: rgba(235, 235, 235, 0.6);
+    --lc-c-text-dark-3: rgba(235, 235, 235, 0.38);
+    --lc-c-text-dark-4: rgba(235, 235, 235, 0.18);
+}
+
+body {
+    margin: 0;
+    background-color: #242424;
+}

@@ -1,12 +1,16 @@
 import React from "react";
-// import BottomNavigation from 'components/BottomNavigation';
+import Header from "components/Header";
+import Footer from "components/Footer";
+
+import "./layout.scss";
 
 class LayoutComponent extends React.Component {
   render() {
     return (
-      <div>
-        <div className="container">{this.props.children}</div>
-        1111
+      <div className="lc-layout">
+        <Header />
+        <div className="lc-container">{this.props.children}</div>
+        <Footer />
       </div>
     );
   }

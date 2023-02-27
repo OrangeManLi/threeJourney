@@ -1,0 +1,7 @@
+.viewer {
+    position: relative;
+
+    & > div {
+        top: 60px !important;
+    }
+}

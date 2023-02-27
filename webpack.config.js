@@ -1,12 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 const isDev = process.env.NODE_ENV === "development";
-
+console.log("数据", process.env.NODE_ENV);
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_ENV || "development",
   entry: "./src/index.js",
   //   output: {
   //     path: path.resolve(__dirname, 'dist'),
@@ -55,7 +56,22 @@ module.exports = {
     // new LoadablePlugin(),
   ],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: isDev
+      ? []
+      : [
+          new CssMinimizerPlugin(),
+          new TerserPlugin({
+            parallel: true, // 可省略，默认开启并行
+            terserOptions: {
+              toplevel: true, // 最高级别，删除无用代码
+            },
+          }),
+        ],
+    splitChunks: {
+      name: "commons",
+      chunks: "all",
+      maxSize: 400000,
+    },
   },
   devServer: {
     compress: true, // 启动Gzip

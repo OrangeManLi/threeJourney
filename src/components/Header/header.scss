@@ -1,0 +1,16 @@
+.lc-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(84, 84, 84, 0.48);
+
+    color: var(--lc-c-text-2);
+
+    .wrap {
+        display: flex;
+        padding: 8px 16px;
+        justify-content: space-between;
+    }
+}
